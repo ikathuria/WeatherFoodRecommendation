@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if prediction %}
+
+<form method="POST">
+    <button type="submit" class="btn btn-dark">
+        Refresh List
+    </button>
+    <button class="btn btn-dark">
+        <a href="{{url_for('custom_weather')}}">Set your own weather values</a>
+    </button>
+    <button class="btn btn-dark">
+        <a href="{{url_for('home')}}">Go back home</a>
+    </button>
+</form>
+
+<h2>Recommendations for {{ meal }}@{{ temp_avg }}°C in Delhi, India</h2>
+    <ul class="list-group">
+        {% for i in prediction.keys() %}
+        <li class="list-group-item">{{ i }}</li>
+        {% endfor %}
+    </ul>
+
+{% else %}
+
+<form method="POST">
+    <button type="submit" class="btn btn-dark">
+        Let's Eat !
+    </button>
+    <button class="btn btn-dark">
+        <a href="{{url_for('custom_weather')}}">Set your own weather values</a>
+    </button>
+</form>
+
+{% endif %}
+
+{% endblock %}

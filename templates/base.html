@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="description" content="Weather Food Recommender.">
+		<meta name="author" content="Ishani Kathuria">
+
+		<!-- favicon and title -->
+		<link rel="icon" href="">
+		<title>Weather Food Recommender</title>
+
+		<!-- Google fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap" rel="stylesheet">
+
+		<!-- Bootstrap core CSS -->
+		<link href="{{ url_for('static', filename='bootstrap.min.css') }}" rel="stylesheet">
+
+		<!-- Additional CSS Files -->
+		<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    
+        <!-- Font Awesome -->
+		<script src="https://kit.fontawesome.com/074ae95ee1.js" crossorigin="anonymous"></script>
+
+	</head>
+
+<body align="center">
+    <div class="row">
+        <div class="col">
+            <div class="jumbotron text-center">
+                <h1>Real-Time Temperature Based Food Recommendation using AI</h1>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="container text-center">
+                {% block content %}{% endblock %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>

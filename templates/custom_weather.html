@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if prediction %}
+
+<form method="POST">
+    <button type="submit" class="btn btn-dark">
+        Refresh List
+    </button>
+    <button class="btn btn-dark">
+        <a href="{{url_for('custom_weather')}}">Set more custom weather values</a>
+    </button>
+    <button class="btn btn-dark">
+        <a href="{{url_for('home')}}">Go back home</a>
+    </button>
+</form>
+
+<h2>Recommendations for {{ meal }}@{{ temp_avg }}°C in Delhi, India</h2>
+    <ul class="list-group">
+        {% for i in prediction.keys() %}
+        <li class="list-group-item">{{ i }}</li>
+        {% endfor %}
+    </ul>
+
+{% else %}
+
+<form method="POST">
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label" for="temp_avg">Average Temperature</label>
+        <div class="col-sm-10">
+            <input type="number" class="form-control" id="temp_avg" name="temp_avg" placeholder="Enter temperature in °C">
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label" for="temp_max">Maximum Temperature</label>
+        <div class="col-sm-10">
+            <input type="number" class="form-control" id="temp_max" name="temp_max" placeholder="Enter temperature in °C">
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label" for="temp_min">Minimum Temperature</label>
+        <div class="col-sm-10">
+            <input type="number" class="form-control" id="temp_min" name="temp_min" placeholder="Enter temperature in °C">
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label" for="prec">Precipation</label>
+        <div class="col-sm-10">
+            <input type="number" class="form-control" id="prec" name="prec" placeholder="Enter precipation in mm">
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label" for="meal">Choose meal time</label>
+        <div class="col-sm-10">
+            <select class="form-select" id="meal" name="meal">
+                <option value="" selected>None</option>
+                <option value="morning">Morning</option>
+                <option value="afternoon">Afternoon</option>
+                <option value="evening">Evening</option>
+                <option value="night">Night</option>
+                <option value="late_night">Late Night</option>
+            </select>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-dark">
+        Let's Eat !
+    </button>
+    <button class="btn btn-dark">
+        <a href="{{url_for('home')}}">Go back home</a>
+    </button>
+</form>
+
+{% endif %}
+
+{% endblock %}
